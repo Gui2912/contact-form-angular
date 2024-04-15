@@ -1,1 +1,60 @@
-<p>contact-form works!</p>
+<form (ngSubmit)="submit()" [formGroup]="contactForm">
+  <div>
+    <input formControlName="name" type="text" placeholder="Nome..." />
+    <p
+      *ngIf="errors.name?.['required'] &&
+      contactForm.get('name')?.dirty ||
+      contactForm.get('name')?.touched"
+    >
+      Nome obrigatório
+    </p>
+  </div>
+  <div>
+    <input formControlName="email" type="email" placeholder="Email..." />
+    <p
+      *ngIf="errors.email?.['required'] &&
+      contactForm.get('email')?.dirty ||
+      contactForm.get('email')?.touched"
+    >
+      Email obrigatório
+    </p>
+    <p *ngIf="errors.email?.['email'] ">Email inválido</p>
+  </div>
+  <div>
+    <input formControlName="phone" type="text" placeholder="(00)00000-0000" />
+    <p
+      *ngIf="errors.phone?.['required'] &&
+      contactForm.get('phone')?.dirty ||
+      contactForm.get('phone')?.touched"
+    >
+      Telefone obrigatório
+    </p>
+  </div>
+  <div>
+    <select formControlName="area">
+      <option value="">Selecione uma área</option>
+      <option value="administrativo">Administrativo</option>
+      <option value="rh">Recursos Humanos</option>
+      <option value="comercial">Comercial</option>
+    </select>
+    <p
+      *ngIf="errors.area?.['required'] &&
+      contactForm.get('area')?.dirty ||
+      contactForm.get('area')?.touched"
+    >
+      Selecione uma área de contato
+    </p>
+  </div>
+  <div>
+    <textarea formControlName="message" placeholder="Mensagem..."></textarea>
+    <p
+      *ngIf="errors.message?.['required'] &&
+      contactForm.get('message')?.dirty ||
+      contactForm.get('message')?.touched"
+    >
+      Mensagem obrigatória
+    </p>
+    <p *ngIf="errors.area?.['minlength']">Mínimo de 10 caracteres</p>
+  </div>
+  <button type="submit">Enviar Mensagem</button>
+</form>
