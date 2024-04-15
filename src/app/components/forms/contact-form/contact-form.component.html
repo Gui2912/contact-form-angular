@@ -1,60 +1,62 @@
-<form (ngSubmit)="submit()" [formGroup]="contactForm">
-  <div>
+<form (ngSubmit)="submit()" [formGroup]="contactForm" class="field-box">
+  <app-field-box [error]="errors.name">
     <input formControlName="name" type="text" placeholder="Nome..." />
-    <p
+    <app-error-message
       *ngIf="errors.name?.['required'] &&
-      contactForm.get('name')?.dirty ||
-      contactForm.get('name')?.touched"
+      contactForm.get('name')?.dirty "
     >
       Nome obrigatório
-    </p>
-  </div>
-  <div>
+    </app-error-message>
+    <app-error-message *ngIf="errors.name?.['minlength']">
+      Mínimo de 3 caracteres
+    </app-error-message>
+  </app-field-box>
+  <app-field-box [error]="errors.email">
     <input formControlName="email" type="email" placeholder="Email..." />
-    <p
+    <app-error-message
       *ngIf="errors.email?.['required'] &&
-      contactForm.get('email')?.dirty ||
-      contactForm.get('email')?.touched"
+      contactForm.get('email')?.dirty "
     >
       Email obrigatório
-    </p>
-    <p *ngIf="errors.email?.['email'] ">Email inválido</p>
-  </div>
-  <div>
+    </app-error-message>
+    <app-error-message *ngIf="errors.email?.['email'] "
+      >Email inválido</app-error-message
+    >
+  </app-field-box>
+  <app-field-box [error]="errors.phone">
     <input formControlName="phone" type="text" placeholder="(00)00000-0000" />
-    <p
+    <app-error-message
       *ngIf="errors.phone?.['required'] &&
-      contactForm.get('phone')?.dirty ||
-      contactForm.get('phone')?.touched"
+      contactForm.get('phone')?.dirty"
     >
       Telefone obrigatório
-    </p>
-  </div>
-  <div>
+    </app-error-message>
+  </app-field-box>
+  <app-field-box [error]="errors.area">
     <select formControlName="area">
       <option value="">Selecione uma área</option>
       <option value="administrativo">Administrativo</option>
       <option value="rh">Recursos Humanos</option>
       <option value="comercial">Comercial</option>
     </select>
-    <p
+    <app-error-message
       *ngIf="errors.area?.['required'] &&
-      contactForm.get('area')?.dirty ||
-      contactForm.get('area')?.touched"
+      contactForm.get('area')?.dirty "
     >
       Selecione uma área de contato
-    </p>
-  </div>
-  <div>
+    </app-error-message>
+  </app-field-box>
+  <app-field-box [error]="errors.message">
     <textarea formControlName="message" placeholder="Mensagem..."></textarea>
-    <p
+    <app-error-message
       *ngIf="errors.message?.['required'] &&
-      contactForm.get('message')?.dirty ||
-      contactForm.get('message')?.touched"
+      contactForm.get('message')?.dirty"
     >
       Mensagem obrigatória
-    </p>
-    <p *ngIf="errors.area?.['minlength']">Mínimo de 10 caracteres</p>
-  </div>
+    </app-error-message>
+    <app-error-message *ngIf="errors.area?.['minlength']"
+      >Mínimo de 10 caracteres</app-error-message
+    >
+  </app-field-box>
   <button type="submit">Enviar Mensagem</button>
 </form>
