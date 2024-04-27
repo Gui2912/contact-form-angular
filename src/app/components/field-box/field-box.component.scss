@@ -1,13 +1,14 @@
 %field{
-  border: 2px solid var(--color-blue);
+  width: 100%;
   font-family: var(--font-primary);
   font-size: 1rem;
   font-weight: 400;
   color: var(--color-black);
   background-color: var(--color-white);
   border-radius: 8px;
-  transition: 0.4s;
+  transition: 0.8s;
   outline: none;
+  border: 2px solid var(--color-blue);
 }
 
 .field-box {

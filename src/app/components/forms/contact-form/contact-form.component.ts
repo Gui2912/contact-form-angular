@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { FieldBoxComponent } from '../../field-box/field-box.component';
 
+
 @Component({
   selector: 'app-contact-form',
   standalone: true,
@@ -16,7 +17,7 @@ import { FieldBoxComponent } from '../../field-box/field-box.component';
     ErrorMessageComponent,
     FieldBoxComponent,
     ReactiveFormsModule,
-    CommonModule,
+    CommonModule
   ],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss',

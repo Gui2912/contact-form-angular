@@ -1,4 +1,4 @@
-<form (ngSubmit)="submit()" [formGroup]="contactForm" class="field-box">
+<form (ngSubmit)="submit()" [formGroup]="contactForm" class="field-box form">
   <app-field-box [error]="errors.name">
     <input formControlName="name" type="text" placeholder="Nome..." />
     <app-error-message
@@ -58,5 +58,5 @@
       >Mínimo de 10 caracteres</app-error-message
     >
   </app-field-box>
-  <button type="submit">Enviar Mensagem</button>
+  <button class="btn solid" type="submit">Enviar Mensagem</button>
 </form>
